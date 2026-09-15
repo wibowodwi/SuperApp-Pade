@@ -1,8 +1,8 @@
-# SuperApp-Pade
-Web Keripik Pade
+# ShopMate AI — Toko Camilan + Admin + WhatsApp
 
-website static top bar, navbar, hero besar, kategori, grid produk, keranjang di kanan, benefit bar, serta halaman admin untuk CRUD produk.
+Paket ini adalah website static yang meniru layout pada screenshot yang diberikan: top bar, navbar, hero besar, kategori, grid produk, keranjang di kanan, benefit bar, serta halaman admin untuk CRUD produk.
 
+## Teknologi gratis
 - HTML + CSS + JavaScript vanilla — tanpa build rumit.
 - Supabase Free — database PostgreSQL + Auth. Cocok untuk mulai gratis.
 - Cloudflare Pages — hosting static gratis.
