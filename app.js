@@ -19,3 +19,21 @@ function renderCart(){const wrap=document.getElementById('cartItems');document.g
 function checkout(){if(!cart.length){document.getElementById('checkoutHint').textContent='Tambahkan produk ke keranjang dulu.';return}const name=document.getElementById('customerName').value.trim()||'Pelanggan';const note=document.getElementById('customerNote').value.trim();const total=cart.reduce((s,x)=>s+x.price*x.qty,0);const lines=cart.map(x=>`• ${x.name} x${x.qty} = ${rupiah(x.price*x.qty)}`).join('%0A');const msg=`Halo ${C.storeName||'ShopMate AI'}, saya ingin pesan:%0A%0A${lines}%0A%0ATotal: ${rupiah(total)}%0ANama: ${encodeURIComponent(name)}${note?`%0ACatatan: ${encodeURIComponent(note)}`:''}`;const num=(C.whatsappNumber||'628XXXXXXXXXX').replace(/\D/g,'');if(num.includes('XXXXXXXX')){document.getElementById('checkoutHint').textContent='Isi nomor WhatsApp toko di config.js terlebih dahulu.';return}window.open(`https://wa.me/${num}?text=${msg}`,'_blank')}
 function tanyaShopper(){const num=(C.whatsappNumber||'628XXXXXXXXXX').replace(/\D/g,'');if(num.includes('XXXXXXXX')){alert('Isi nomor WhatsApp toko di config.js terlebih dahulu.');return}const msg='Mau daftar menjadi Reseller Pade dong mimin baik';window.open(`https://wa.me/${num}?text=${encodeURIComponent(msg)}`,'_blank')}
 document.getElementById('search').addEventListener('input',renderProducts);document.getElementById('category').addEventListener('change',renderProducts);document.getElementById('clearCart').onclick=()=>{cart=[];save();renderProducts();renderCart()};document.getElementById('checkoutBtn').onclick=checkout;document.getElementById('cartJump').onclick=()=>document.getElementById('cartCard').scrollIntoView({behavior:'smooth',block:'center'});document.getElementById('tanyaShopper').addEventListener('click',e=>{e.preventDefault();tanyaShopper()});initDB();
+function setupFooterLinks(){
+  const setLink=(id,url)=>{
+    const el=document.getElementById(id);
+    if(el&&url) el.href=url;
+  };
+
+  setLink('instagramLink',C.instagramUrl);
+  setLink('tiktokLink',C.tiktokUrl);
+  setLink('googleMapsLink',C.googleMapsUrl);
+
+  const wa=String(C.whatsappNumber||'').replace(/\D/g,'');
+  if(wa) setLink('whatsappLink',`https://wa.me/${wa}`);
+
+  const name=document.getElementById('footerStoreName');
+  if(name&&C.storeName) name.textContent=C.storeName;
+}
+
+setupFooterLinks();
