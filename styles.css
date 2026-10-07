@@ -11,3 +11,39 @@
     align-items: center;
     gap: 10px;
 }
+
+
+/* Product image detail popup */
+.product-card img{cursor:zoom-in}
+.product-modal{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:20px}
+.product-modal.hidden{display:none}
+.product-modal-backdrop{position:absolute;inset:0;background:rgba(20,15,12,.68);backdrop-filter:blur(3px)}
+.product-modal-panel{position:relative;z-index:1;width:min(860px,100%);max-height:min(88vh,760px);overflow:auto;background:#fffdf9;border-radius:18px;border:1px solid var(--line);box-shadow:0 24px 80px rgba(0,0,0,.28);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:0}
+.product-modal-image-wrap{min-height:420px;background:#f4eadf;display:grid;place-items:center;padding:24px;border-radius:18px 0 0 18px}
+.product-modal-image-wrap img{display:block;width:100%;height:100%;max-height:68vh;object-fit:contain;border-radius:12px}
+.product-modal-info{padding:38px 34px 34px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.product-modal-category{font:500 10px 'DM Mono';letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+.product-modal-info h2{font-family:'Playfair Display',serif;font-size:32px;line-height:1.05;letter-spacing:-.5px;margin:0 0 10px;color:var(--ink)}
+.product-modal-price{font-size:18px;font-weight:700;color:var(--orange);margin-bottom:20px}
+.product-modal-description{font-size:14px;line-height:1.65;color:var(--muted);white-space:pre-line;overflow-wrap:anywhere}
+.product-modal-close{position:absolute;right:12px;top:12px;z-index:3;width:38px;height:38px;border:0;border-radius:50%;background:#fff;color:var(--ink);box-shadow:0 4px 18px rgba(0,0,0,.15);font-size:27px;line-height:1;cursor:pointer}
+.product-modal-close:hover{background:var(--orange);color:#fff}
+body.product-modal-open{overflow:hidden}
+@media(max-width:700px){
+  .product-modal{padding:12px}
+  .product-modal-panel{grid-template-columns:1fr;max-height:92vh;border-radius:15px}
+  .product-modal-image-wrap{min-height:0;height:52vh;max-height:430px;padding:18px;border-radius:15px 15px 0 0}
+  .product-modal-image-wrap img{max-height:100%;}
+  .product-modal-info{padding:22px 20px 26px}
+  .product-modal-info h2{font-size:26px}
+  .product-modal-price{margin-bottom:12px}
+  .product-modal-description{font-size:13px;line-height:1.55}
+  .product-modal-close{right:10px;top:10px;width:36px;height:36px}
+}
+
+/* Product card detail triggers */
+.product-image-button,.product-name-button{border:0;background:transparent;padding:0;margin:0;display:block;width:100%;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.product-image-button{border-radius:8px;overflow:hidden}
+.product-image-button:focus-visible,.product-name-button:focus-visible{outline:2px solid var(--orange);outline-offset:2px;border-radius:7px}
+.product-name-button h3{cursor:pointer}
+.product-name-button:hover h3{color:var(--orange)}
